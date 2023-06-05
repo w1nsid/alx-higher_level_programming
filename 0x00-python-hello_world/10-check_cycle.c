@@ -16,6 +16,11 @@ int check_cycle(listint_t *list)
 	if (list == NULL)
 		return (0);
 
+	if (main_pointer == NULL || skip_pointer == NULL)
+		exit = false;
+	else if (skip_pointer->next == NULL)
+		exit = false;
+
 	while (exit)
 	{
 		main_pointer = main_pointer->next;
