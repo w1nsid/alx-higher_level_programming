@@ -7,7 +7,7 @@
  * @py_object: Python Object
  * Return: None
  */
-void display_python_bytes(PyObject *py_object)
+void print_python_bytes(PyObject *py_object)
 {
 	char *byte_str;
 	long int byte_size, index, byte_limit;
@@ -44,7 +44,7 @@ void display_python_bytes(PyObject *py_object)
  * @py_object: Python Object
  * Return: None
  */
-void display_python_list(PyObject *py_object)
+void print_python_list(PyObject *py_object)
 {
 	long int list_size, index;
 	PyListObject *py_list;
@@ -62,6 +62,6 @@ void display_python_list(PyObject *py_object)
 		list_element = ((PyListObject *)py_object)->ob_item[index];
 		printf("Element %ld: %s\n", index, ((list_element)->ob_type)->tp_name);
 		if (PyBytes_Check(list_element))
-			display_python_bytes(list_element);
+			print_python_bytes(list_element);
 	}
 }
