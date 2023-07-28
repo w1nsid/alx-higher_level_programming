@@ -1,28 +1,31 @@
 #include "Python.h"
 
+
 /**
  * display_python_string_info - Prints details about Python string objects.
  * @py_obj: A PyObject string object.
  */
-void display_python_string_info(PyObject *py_obj)
+
+
+void print_python_string(PyObject *p)
 {
-	long int str_length;
+	long int length;
 
 	fflush(stdout);
 
-	printf("[.] String object info:\n");
-	if (strcmp(py_obj->ob_type->tp_name, "str") != 0)
+	printf("[.] string object info\n");
+	if (strcmp(p->ob_type->tp_name, "str") != 0)
 	{
 		printf("  [ERROR] Invalid String Object\n");
 		return;
 	}
 
-	str_length = ((PyASCIIObject *)(py_obj))->length;
+	length = ((PyASCIIObject *)(p))->length;
 
-	if (PyUnicode_IS_COMPACT_ASCII(py_obj))
-		printf("  Type: compact ascii\n");
+	if (PyUnicode_IS_COMPACT_ASCII(p))
+		printf("  type: compact ascii\n");
 	else
-		printf("  Type: compact unicode object\n");
-	printf("  Length: %ld\n", str_length);
-	printf("  Value: %ls\n", PyUnicode_AsWideCharString(py_obj, &str_length));
+		printf("  type: compact unicode object\n");
+	printf("  length: %ld\n", length);
+	printf("  value: %ls\n", PyUnicode_AsWideCharString(p, &length));
 }
