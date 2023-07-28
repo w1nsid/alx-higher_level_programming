@@ -2,7 +2,7 @@
 """This script describes a function for computing the sum of two integers."""
 
 
-def sum_integers(param1, param2=98):
+def add_integer(param1, param2=98):
     """Returns the result of the addition operation for two numbers.
 
     In case of float type arguments, they are converted to integers before
