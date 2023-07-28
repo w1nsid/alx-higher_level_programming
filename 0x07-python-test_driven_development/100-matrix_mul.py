@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""Module to define a matrix multiplication operation."""
+"""Defines a matrix multiplication function."""
 
 
-def matrix_mul(matrix_1, matrix_2):
+def matrix_mul(m_a, m_b):
     """Perform multiplication of two matrices.
 
     Args:
@@ -18,51 +18,51 @@ def matrix_mul(matrix_1, matrix_2):
         A new matrix resulting from the multiplication of matrix_1 by matrix_2.
     """
 
-    if matrix_1 == [] or matrix_1 == [[]]:
+    if m_a == [] or m_a == [[]]:
         raise ValueError("m_a can't be empty")
-    if matrix_2 == [] or matrix_2 == [[]]:
+    if m_b == [] or m_b == [[]]:
         raise ValueError("m_b can't be empty")
 
-    if not isinstance(matrix_1, list):
+    if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
-    if not isinstance(matrix_2, list):
+    if not isinstance(m_b, list):
         raise TypeError("m_b must be a list")
 
-    if not all(isinstance(row, list) for row in matrix_1):
+    if not all(isinstance(row, list) for row in m_a):
         raise TypeError("m_a must be a list of lists")
-    if not all(isinstance(row, list) for row in matrix_2):
+    if not all(isinstance(row, list) for row in m_b):
         raise TypeError("m_b must be a list of lists")
 
     if not all((isinstance(ele, int) or isinstance(ele, float))
-               for ele in [num for row in matrix_1 for num in row]):
+               for ele in [num for row in m_a for num in row]):
         raise TypeError("m_a should contain only integers or floats")
     if not all((isinstance(ele, int) or isinstance(ele, float))
-               for ele in [num for row in matrix_2 for num in row]):
+               for ele in [num for row in m_b for num in row]):
         raise TypeError("m_b should contain only integers or floats")
 
-    if not all(len(row) == len(matrix_1[0]) for row in matrix_1):
+    if not all(len(row) == len(m_a[0]) for row in m_a):
         raise TypeError("each row of m_a must should be of the same size")
-    if not all(len(row) == len(matrix_2[0]) for row in matrix_2):
+    if not all(len(row) == len(m_b[0]) for row in m_b):
         raise TypeError("each row of m_b must should be of the same size")
 
-    if len(matrix_1[0]) != len(matrix_2):
+    if len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
-    flipped_matrix_2 = []
-    for row_idx in range(len(matrix_2[0])):
+    inverted_b = []
+    for r in range(len(m_b[0])):
         new_row = []
-        for col_idx in range(len(matrix_2)):
-            new_row.append(matrix_2[col_idx][row_idx])
-        flipped_matrix_2.append(new_row)
+        for c in range(len(m_b)):
+            new_row.append(m_b[c][r])
+        inverted_b.append(new_row)
 
-    product_matrix = []
-    for row in matrix_1:
+    new_matrix = []
+    for row in m_a:
         new_row = []
-        for col in flipped_matrix_2:
-            element_product = 0
-            for idx in range(len(flipped_matrix_2[0])):
-                element_product += row[idx] * col[idx]
-            new_row.append(element_product)
-        product_matrix.append(new_row)
+        for col in inverted_b:
+            prod = 0
+            for i in range(len(inverted_b[0])):
+                prod += row[i] * col[i]
+            new_row.append(prod)
+        new_matrix.append(new_row)
 
-    return product_matrix
+    return new_matrix
