@@ -6,11 +6,11 @@ class Rectangle:
     """This class models a rectangle.
 
     Attributes:
-        instance_count (int): Counts the instances of Rectangle objects.
+        number_of_instances (int): Counts the instances of Rectangle objects.
         symbol (any): The symbol used to depict the rectangle.
     """
 
-    instance_count = 0
+    number_of_instances = 0
     symbol = "#"
 
     def __init__(self, width=0, height=0):
@@ -20,7 +20,7 @@ class Rectangle:
             width (int): Defines the width of the rectangle.
             height (int): Defines the height of the rectangle.
         """
-        type(self).instance_count += 1
+        type(self).number_of_instances += 1
         self.width = width
         self.height = height
 
@@ -101,5 +101,5 @@ class Rectangle:
 
     def __del__(self):
         """Called when a Rectangle instance is deleted."""
-        type(self).instance_count -= 1
+        type(self).number_of_instances -= 1
         print("Bye rectangle...")
