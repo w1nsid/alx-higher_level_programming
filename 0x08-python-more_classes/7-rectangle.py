@@ -7,11 +7,11 @@ class Rectangle:
 
     Attributes:
         number_of_instances (int): Counts the instances of Rectangle objects.
-        symbol (any): The symbol used to depict the rectangle.
+        print_symbol (any): The symbol used to depict the rectangle.
     """
 
     number_of_instances = 0
-    symbol = "#"
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """Constructs a Rectangle instance.
@@ -63,14 +63,14 @@ class Rectangle:
     def __str__(self):
         """Generates a printable string representation of the Rectangle.
 
-        The rectangle is represented using the symbol character.
+        The rectangle is represented using the print_symbol character.
         """
         if self.__width == 0 or self.__height == 0:
             return ("")
 
         rect_str = []
         for i in range(self.__height):
-            [rect_str.append(str(self.symbol)) for j in range(self.__width)]
+            [rect_str.append(str(self.print_symbol)) for j in range(self.__width)]
             if i != self.__height - 1:
                 rect_str.append("\n")
         return ("".join(rect_str))
