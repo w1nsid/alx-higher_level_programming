@@ -5,6 +5,6 @@
 class MyList(list):
     """Provides a method for printing the list in a sorted manner."""
 
-    def print_sorted_list(self):
+    def print_sorted(self):
         """Print the list items in sorted ascending order."""
         print(sorted(self))
