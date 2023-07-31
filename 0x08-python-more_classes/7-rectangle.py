@@ -52,13 +52,13 @@ class Rectangle:
 
     def area(self):
         """Calculates the area of the Rectangle."""
-        return (self.__width * self.__height)
+        return self.__width * self.__height
 
     def perimeter(self):
         """Calculates the perimeter of the Rectangle."""
         if self.__width == 0 or self.__height == 0:
-            return (0)
-        return ((self.__width * 2) + (self.__height * 2))
+            return 0
+        return (self.__width * 2) + (self.__height * 2)
 
     def __str__(self):
         """Generates a printable string representation of the Rectangle.
@@ -66,20 +66,23 @@ class Rectangle:
         The rectangle is represented using the print_symbol character.
         """
         if self.__width == 0 or self.__height == 0:
-            return ("")
+            return ""
 
         rect_str = []
         for i in range(self.__height):
-            [rect_str.append(str(self.print_symbol)) for j in range(self.__width)]
+            [
+                rect_str.append(str(self.print_symbol))
+                for j in range(self.__width)
+            ]
             if i != self.__height - 1:
                 rect_str.append("\n")
-        return ("".join(rect_str))
+        return "".join(rect_str)
 
     def __repr__(self):
         """Generates a formal string representation of the Rectangle."""
         rect_str = "Rectangle(" + str(self.__width)
         rect_str += ", " + str(self.__height) + ")"
-        return (rect_str)
+        return rect_str
 
     def __del__(self):
         """Called when a Rectangle instance is deleted."""
